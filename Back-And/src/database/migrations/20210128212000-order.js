@@ -2,33 +2,23 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('orders', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
-      },
-      password_hash: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      employee: {
+      products: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
         allowNull: false,
       },
-      cart: {
-        type: Sequelize.STRING,
+      idUser: {
+        type: Sequelize.INTEGER,
+        references: { model: 'users', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
         allowNull: true,
       },
       created_at: {
@@ -43,6 +33,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('orders');
   },
 };
