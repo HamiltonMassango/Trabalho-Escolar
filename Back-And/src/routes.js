@@ -6,8 +6,7 @@ import UserController from './app/controllers/UserControllers';
 import SessionController from './app/controllers/SessionControllers';
 import FileController from './app/controllers/FileControllers';
 import EmployeeController from './app/controllers/EmployeeControllers';
-import OrderController from './app/controllers/OrderControllers';
-
+import ProductController from './app/controllers/ProductControllers';
 import authMiddleware from './app/middlewares/auth';
 import OrderControllers from './app/controllers/OrderControllers';
 
@@ -21,5 +20,7 @@ router.put('/users', UserController.update);
 router.get('/employee', EmployeeController.index);
 router.post('/files', upload.single('file'), FileController.store);
 router.post('/order', OrderControllers.store);
+router.post('/product', ProductController.store);
+router.get('/product', ProductController.index);
 
 export default router;
