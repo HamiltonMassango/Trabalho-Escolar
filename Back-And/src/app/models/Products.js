@@ -6,6 +6,7 @@ class Product extends Model {
         name: DataTypes.STRING,
         descrition: DataTypes.STRING,
         url: DataTypes.STRING,
+        price: DataTypes.STRING,
       },
       {
         sequelize,
